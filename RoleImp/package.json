@@ -5,5 +5,5 @@
 	"author" : "Chad Keating AKA SirEverard",
 	"description" : "Add extra events with staff and player stats.",
 	"url" : "http://www.4CStudios.com",
-	"main" : "./RIMain.js",
+	"main" : "./RIMain.js"
 }
