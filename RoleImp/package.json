@@ -1,6 +1,6 @@
 {
 	"id" : "RoleImp",
-	"name" : "Role Improvements",
+	"name" : "Staff Role Improvements",
 	"version" : "0.1.0",
 	"author" : "Chad Keating AKA SirEverard",
 	"description" : "Add extra events with staff and player stats.",
