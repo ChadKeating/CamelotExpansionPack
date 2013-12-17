@@ -1,0 +1,10 @@
+{
+	"id" : "RoleImp",
+	"name" : "Role Improvements",
+	"version" : "0.1.0",
+	"author" : "Chad Keating",
+	"description" : "Add extra events with staff and player stats.",
+	"url" : "http://www.4CStudios.com",
+	"main" : "./RIMain.js",
+	"dependencies" : { "gdt-modAPI":"0.1.x" }
+}
