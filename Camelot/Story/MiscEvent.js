@@ -9,7 +9,6 @@ var MiscEvent = {};
 	/*
 	 * Short Hand Variables
 	 */
-	var Store = CAMELOT.store();
 	var evKey = GDT.eventKeys.gameplay;
 
 
@@ -32,7 +31,7 @@ var MiscEvent = {};
 		trigger: null,
 		getNotification: function (company) {
 			var staffMember = CAMELOT.gC().staff.skip(1).pickRandom();
-			Store.bailstaffMember = staffMember.id;
+			CAMELOT.store().bailstaffMember = staffMember.id;
 			var message = staffMember.name + " had a pretty wild night and landed himself in jail. Looks like he won't be joining us again unless you bail him out!".localize().format(staffMember.name);
 			return new Notification({
 				sourceId: bailEVID,
@@ -42,7 +41,7 @@ var MiscEvent = {};
 			});
 		},
 		complete: function (decision) {
-			var nullme = Store.bailstaffMember;
+			var nullme = CAMELOT.store().bailstaffMember;
 			var staffMember = CAMELOT.gC().staff.first(function (staff) {
 				return staff.id == nullme;
 			});
@@ -70,7 +69,7 @@ var MiscEvent = {};
 			var staffMember = CAMELOT.gC().staff.skip(1).pickRandom();
 			var salary = staffMember.salary;
 			var raise = salary * 0.3;
-			Store.bostaffMember = staffMember.id;
+			CAMELOT.store().bostaffMember = staffMember.id;
 			var message = staffMember.name + " did such a good job on that last contract that they now want to hire him! He will stay for a " + raise.toLocaleString() + "Cr. raise.".localize().format(staffMember.name);
 			return new Notification({
 				sourceId: betterOfferEVID,
@@ -80,7 +79,7 @@ var MiscEvent = {};
 			});
 		},
 		complete: function (decision) {
-			var nullme = Store.bostaffMember;
+			var nullme = CAMELOT.store().bostaffMember;
 			var staffMember = CAMELOT.gC().staff.first(function (staff) {
 				return staff.id == nullme;
 			});
@@ -104,12 +103,12 @@ var MiscEvent = {};
 
 
 	MiscEvent.EventLottery = function () {
-		if (Store.lotto !== true) {
+		if (CAMELOT.store().lotto !== true) {
 			if (Math.floor((Math.random() * 170000) + 1) == 1) {
 				var win = Math.floor((Math.random() * 50000000) + 1000000);
 				CAMELOT.post(new Notification("You won the lottery!".localize(), "WOW, You had the winning ticket. You won " + win.toLocaleString() + "Cr."));
 
-				Store.lotto = true;
+				CAMELOT.store().lotto = true;
 				return CAMELOT.gC().adjustCash(win, "Lottery");
 			} else {
 				return;
@@ -121,7 +120,7 @@ var MiscEvent = {};
 	};
 
 	MiscEvent.Stolen = function () {
-		if (Store.stolen !== true) {
+		if (CAMELOT.store().stolen !== true) {
 			if (Math.floor((Math.random() * 18000) + 1) != 1) {
 				return;
 			}
@@ -139,7 +138,7 @@ var MiscEvent = {};
 			CAMELOT.gC().adjustCash((stolen * -1), "Stolen!");
 			CAMELOT.gC().flags.fireEmployeeId = staffMember.id;
 			DecisionNotifications.fireEmployee.complete(0);
-			Store.stolen = true;
+			CAMELOT.store().stolen = true;
 		}
 
 		GDT.off(evKey.weekProceeded, MiscEvent.Stolen);
@@ -148,18 +147,18 @@ var MiscEvent = {};
 	};
 
 	MiscEvent.BetterOffer = function () {
-		if (Store.boRan !== true) {
+		if (CAMELOT.store().boRan !== true) {
 			if (CAMELOT.gC().staff.length == 1) {
 				return;
 			}
 			CAMELOT.post(betterOffer.getNotification(CAMELOT.gC()));
-			Store.boRan = true;
+			CAMELOT.store().boRan = true;
 		}
 		GDT.off(evKey.contractFinished, MiscEvent.BetterOffer);
 	};
 
 	MiscEvent.BailOut = function () {
-		if (Store.bailRan !== true) {
+		if (CAMELOT.store().bailRan !== true) {
 			if (CAMELOT.gC().staff.length == 1) {
 				return;
 			}
@@ -168,7 +167,7 @@ var MiscEvent = {};
 			}
 
 			CAMELOT.post(bailOut.getNotification(CAMELOT.gC()));
-			Store.bailRan = true;
+			CAMELOT.store().bailRan = true;
 		}
 		GDT.off(evKey.weekProceeded, MiscEvent.BailOut);
 	};

@@ -10,7 +10,6 @@ var Specialism = {};
 	/*
 	 * Short Hand Variables
 	 */
-	var Store = CAMELOT.store();
 	var evKey = GDT.eventKeys.gameplay;
 
 	Specialism.addSpecialismOption = function () {

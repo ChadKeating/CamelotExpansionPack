@@ -9,7 +9,6 @@ var Train = {};
 	/*
 	 * Short Hand Variables
 	 */
-	var Store = CAMELOT.store();
 	var evKey = GDT.eventKeys.gameplay;
 	
     Train.EventTrain = function () {

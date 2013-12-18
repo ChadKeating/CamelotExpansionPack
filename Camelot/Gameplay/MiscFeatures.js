@@ -9,7 +9,6 @@ var MiscFeatures = {};
 	/*
 	 * Short Hand Variables
 	 */
-	var Store = CAMELOT.store();
 	var evKey = GDT.eventKeys.gameplay;
 	
     MiscFeatures.addGameExtentions = function () {
