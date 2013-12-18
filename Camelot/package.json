@@ -1,0 +1,9 @@
+{
+	"id" : "CAMELOT-EXP-PACK",
+	"name" : "Camelot Expansion Pack",
+	"version" : "0.1.3.1b",
+	"author" : "Chad Keating AKA SirEverard",
+	"description" : "Large expansion mod with many added game features.",
+	"url" : "http://forum.greenheartgames.com/t/wip-beta-camelot-expansion-pack/9585",
+	"main" : "./CamelotMain.js"
+}
