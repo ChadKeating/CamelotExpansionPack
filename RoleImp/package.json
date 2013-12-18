@@ -1,8 +1,8 @@
 {
 	"id" : "RoleImp",
-	"name" : "Staff Role Improvements",
-	"version" : "0.1.0",
-	"author" : "Chad Keating AKA SirEverard",
+	"name" : "Role Improvements",
+	"version" : "0.2.1",
+	"author" : "Chad Keating",
 	"description" : "Add extra events with staff and player stats.",
 	"url" : "http://www.4CStudios.com",
 	"main" : "./RIMain.js"

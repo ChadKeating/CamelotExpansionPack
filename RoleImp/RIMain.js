@@ -6,7 +6,12 @@
 		//EventBailOut
 		//EventBetterOffer
 		//Lottery Chance Added	
-			
+		
+		//Bug Improvements
+		RoleImp.addBugRateFlag();
+		RoleImp.addBugResearch();
+		
+		
 		RoleImp.addGameExtentions();
 		RoleImp.addSpecialismOption();
 		RoleImp.setSpecialism();
