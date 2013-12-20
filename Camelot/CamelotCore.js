@@ -22,7 +22,48 @@ var CAMELOT = {};
 	CAMELOT.gC = function () {
 		return GameManager.company;
 	};
-	CAMELOT.runStartUp = function () {
+	
+	CAMELOT.getShortNumberString = function (number) {
+		//Overrides UI.getShortNumberString
+		UI.getShortNumberString = function (number){
+	
+				var abNum = Math.abs(number);
+				var fnum;
+				
+		        switch (true){
+		        	case (abNum >= 1E15):
+					fnum = "{0}Q".format(UI.getLongNumberString(Math.roundToDecimals(number / 1E15, 1)));
+		        	break;
+		        	case (abNum >= 1E12):
+					fnum = "{0}T".format(UI.getLongNumberString(Math.roundToDecimals(number / 1E12, 1)));
+		        	break;
+		        	case (abNum >= 1E9):
+					fnum = "{0}B".format(UI.getLongNumberString(Math.roundToDecimals(number / 1E9, 1)));
+		        	break;
+		        	case (abNum >= 1E6):
+					fnum = "{0}M".format(UI.getLongNumberString(Math.roundToDecimals(number / 1E6, 1)));
+		        	break;
+		        	case (abNum >= 1E3):
+					fnum = "{0}K".format(UI.getLongNumberString(Math.roundToDecimals(number / 1E3, 1)));
+		        	break;
+		        	case (abNum < 1E3):
+					fnum = Math.roundToDecimals(number, 1);
+		        	break;
+		        	default:
+		        	fnum = 0;
+		        	console.log("error");
+		        	break;
+		        }
+		        return fnum;
+		  };
     };
+	
+	
+	
+	
+	CAMELOT.runStartUp = function () {
+		CAMELOT.getShortNumberString();
+    };
+	
 	
 })();
