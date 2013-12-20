@@ -1,8 +1,9 @@
+Camelot Expansion Pack for Game Dev Tycoon
+===========
+
 **Version:** 0.1.3.2b
 **Last Update:** 12-DEC-2013
 **Formerly:** Staff Role Improvements 
-
-<img src="/uploads/default/1505/6da7fcdeb9e80008.png" width="100%" height="100%">
 
 **Description:**
 ----------
