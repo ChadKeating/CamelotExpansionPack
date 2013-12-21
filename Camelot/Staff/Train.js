@@ -15,7 +15,7 @@ var Train = {};
         if (Math.floor((Math.random() * 5) + 1) != 1) {
             return;
         }
-        var game = CAMELOT.gC().gameLog.last().title;
+        var game = CAMELOT.gC().gameLog.last();
         var staffMember = CAMELOT.gC().staff.skip(0).pickRandom();
         var staffName = staffMember.name;
         var statAmount = Math.floor((Math.random() * 15) + 3);
