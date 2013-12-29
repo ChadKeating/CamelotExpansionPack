@@ -120,6 +120,7 @@ var MiscEvent = {};
 	};
 
 	MiscEvent.Stolen = function () {
+		if ( !(2 >= CAMELOT.gC().flags.evil)){return;}
 		if (CAMELOT.store().stolen !== true) {
 			if (Math.floor((Math.random() * 18000) + 1) != 1) {
 				return;

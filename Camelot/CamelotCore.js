@@ -8,7 +8,10 @@ var CAMELOT = {};
 	
 	CAMELOT.store = function() {
 		return GDT.getDataStore("CAMELOT-EXP-PACK").data;
-	};	
+	};
+    CAMELOT.settings = function() {
+        return GDT.getDataStore("CAMELOT-EXP-PACK").settings;
+    };
 	CAMELOT.addSR = function (research) {
 		Research.SpecialItems.push(research);
 	};
@@ -23,7 +26,21 @@ var CAMELOT = {};
 		return GameManager.company;
 	};
 	
-	CAMELOT.getShortNumberString = function (number) {
+	CAMELOT.setContextButtons = function () {
+		var contextMenu = UI._showContextMenu;
+		
+			UI._showContextMenu = function(b, c, d, h){
+				CAMELOT.addContextButtons(b, c);
+				contextMenu(b, c, d, h);
+			};
+	};
+	
+	
+	CAMELOT.addContextButtons = function (screen, buttonArray) { 
+		GridInterface.addButton(screen, buttonArray);
+	};
+
+	CAMELOT.getShortNumberString = function () {
 		//Overrides UI.getShortNumberString
 		UI.getShortNumberString = function (number){
 	
@@ -57,13 +74,15 @@ var CAMELOT = {};
 		        return fnum;
 		  };
     };
-	
-	
-	
-	
+
 	CAMELOT.runStartUp = function () {
+		CAMELOT.setContextButtons();
 		CAMELOT.getShortNumberString();
     };
+	
+	
+	
+	
 	
 	
 })();

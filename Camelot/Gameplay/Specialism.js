@@ -6,12 +6,6 @@
 var Specialism = {};
 
 (function () {
-
-	/*
-	 * Short Hand Variables
-	 */
-	var evKey = GDT.eventKeys.gameplay;
-
 	Specialism.addSpecialismOption = function () {
 		var draw = "";
 		draw += '<div id="specialism" class="centeredButtonWrapper">';
@@ -51,6 +45,7 @@ var Specialism = {};
 				console.log("Special Errored");
 				break;
 			}
+                //CAMELOT.store().specialismSet = true;
 		};
 
 		UI.closeNewGameView = function () {

@@ -12,7 +12,7 @@ var Train = {};
 	var evKey = GDT.eventKeys.gameplay;
 	
     Train.EventTrain = function () {
-        if (Math.floor((Math.random() * 5) + 1) != 1) {
+        if (Math.floor((Math.random() * 4) + 1) != 1) {
             return;
         }
         var game = CAMELOT.gC().gameLog.last();

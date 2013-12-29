@@ -1,0 +1,50 @@
+.newCon .ui-slider-range {
+background: linear-gradient(to bottom, #c9de96 0%,#8ab66b 57%,#398235 100%);
+}
+
+.market .ui-slider-range {
+    background: linear-gradient(to bottom, rgba(107,178,196,1) 0%,rgba(35,83,138,1) 100%);
+}
+
+.main .ui-slider-range {
+    background: linear-gradient(to bottom,  #a90329 0%,#8f0222 44%,#6d0019 100%);
+}
+
+
+
+
+
+.focusSliderWrapper.newCon {
+		left: 5px;
+}
+
+.focusSliderWrapper.market {
+		left: 190px;
+}
+
+.focusSliderWrapper.main {
+		left: 385px;
+}
+
+#gridInterfaceContent {
+position:relative;
+}
+
+#gridInterfaceOverlay {
+		background-image:url("../../../../images/projectIcons/superb/grid.png");
+		background-size:100% 100%;
+		width:95%;
+		height:95%;
+		position:absolute;
+		opacity:0.4;
+		-webkit-filter: blur(7px);
+	    z-index: -1; /* Keep the background behind the content */
+}
+
+#gridExpendCost {
+    text-align: right;
+}
+
+
+
+

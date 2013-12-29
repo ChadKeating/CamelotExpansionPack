@@ -21,7 +21,7 @@ var Debug = {};
 		duration: 3E4,
 		cost: 50E4,
 		canResearch: function (a) {
-			return (a.staff.length > 1 && CAMELOT.store().effRS !== true);
+			return (a.staff.length > 2 && CAMELOT.store().effRS !== true);
 		},
 		category: "Debugging",
 		categoryDisplayName: "Debugging".localize(),
@@ -78,9 +78,7 @@ var Debug = {};
 	Debug.addBugRate = function () {
 		var appendMe = GameManager.decreaseBugs;
 		GameManager.decreaseBugs = function (b) {
-			console.log(CAMELOT.store().bugRate);
 			if (CAMELOT.store().CErunOnce !== true) {
-	            //intilising variables
 	            CAMELOT.store().bugRate = 1;
 	            CAMELOT.store().CErunOnce = true;
 	        }
@@ -91,6 +89,7 @@ var Debug = {};
 				
 				b = CAMELOT.store().bugRate;
 			}
+			
 			appendMe(b);
 		};
 	};
