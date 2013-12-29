@@ -74,6 +74,7 @@ var GridInterface = {};
             },
             onOpen: function() {
                 GameManager.togglePause();
+                GameManager.resume(!0);
             }
         });
 
