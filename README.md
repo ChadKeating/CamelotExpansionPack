@@ -1,9 +1,9 @@
 Camelot Expansion Pack for Game Dev Tycoon
 ===========
 
-**Version:** 0.1.3.2b
-**Last Update:** 12-DEC-2013
-**Formerly:** Staff Role Improvements 
+**Version:** 0.1.3.3b
+
+**Last Update:** 21-DEC-2013
 
 **Description:**
 ----------
@@ -50,40 +50,11 @@ Currently Working On: Grid
  - **Better Offer** - A staff member may get a better offer from another company when doing contracts.
  - **Lottery** - Very low chance of winning the lottery.		
 
-
 ----------
-
-
-**GitHub:** https://github.com/SirEverard/CamelotExpansionPack
-----------
-[<img src="/uploads/default/1506/10da684d12cd635e.png" width="200" height="75">][1] 
 
 It's very much untested in the long run currently so I would appreciate some testers/feedback.
 Not 100% sure how it will react to old saves as I don't currently have any, but it should integrate well and work with other mods.
-
-
-----------
-
-
-**Planned Features**
-----------
-  - **Game Modes**
- - **One Man Machine** - Gamemode based on being stuck in the garage.
-This mod will have an adjust story line allowing you to gain research, training and such. 
-It will be very much a "Survival" mode.
- - **Sandbox** - Starting out at the last level with a random assortment already in your repertoire.
- - **Story Line** - Planning on adding in some story lines that have multiple out comes, events and such that you must play through. I am thinking something like the story from "Uplink" but a GameDev version. Possibly adding multiple different "Campaigns" to the game to allow for radically different play throughs.
-
-  - **Grid Expansion** - Plan on adding extra features for when you release Grid
-  - **Competition** - Plan on adding some competition and the ability to "buy them out"
-  - **Out Sourcing** - Add some functionality to have design and tech "outsourced" to increase point production.
-  - **Office Improvements** - Add some toys and things around the office to reduce the need for going on vocation. 
-  - **Stock Market** - Ability to buy and sell shares to generate some much needed cash. Will hopefully tie this in with the competition feature aswell. 
-  - **Marketing Expansion** - Addtional Marketing Methods and features
- - **Charity Events** - Ability to host charity events for hype and fans
-  - **Company Logos** - Custom Logos.
- - **Engine Market** - Ability to buy game engines from other companies.
- - **Team Leaders** - Your guys can train to be team leaders and get that much needed help in their field when it comes to AAA games
+ers** - Your guys can train to be team leaders and get that much needed help in their field when it comes to AAA games
 
 ***~Everard***
 
