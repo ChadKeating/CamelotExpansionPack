@@ -14,10 +14,10 @@ var GridInterface = {};
 			'<div id="gridInterfaceContent">' +
 			'<div id="gridInterfaceTitle" class="windowTitle smallerWindowTitle">Grid Budget</div>' +
 			'<div class="focusSliderContainer">' +
-			'<div class="focusSliderWrapper newCon">' +
-			'<div id="newCon" class="focusSlider newCon"></div>' +
-			'<div class="focusSliderTitle">New Content</div>' +
-		'</div>' +
+				'<div class="focusSliderWrapper newCon">' +
+				'<div id="newCon" class="focusSlider newCon"></div>' +
+				'<div class="focusSliderTitle">New Content</div>' +
+			'</div>' +
 		'<div class="focusSliderWrapper market">' +
 			'<div id="market" class="focusSlider market"></div>' +
 			'<div class="focusSliderTitle">Marketing</div>' +
@@ -28,15 +28,18 @@ var GridInterface = {};
 		'</div>' +
 			'</div>' +
 			'</div>' +
+		'<div class="budgetDurationPreviewContainer">'+
+             '<div class="budgetDurationPreviewTitle">Budget Allocation</div>'+
+             '<div class="budgetDurationPreviewWrapper ul-vt-bar">'+
+             	'<div class="budgetDurationPreview newConPreview ul-vt-bar-left"></div>'+
+                '<div class="budgetDurationPreview marketPreview"></div>'+
+                '<div class="budgetDurationPreview mainPreview ul-vt-bar-right"></div>'+
+             '</div>'+
+        '</div>'+
 		'<div class="centeredButtonWrapper" style="margin-top: 20px">' +
 			'<h2>Expenditure Cost: </h2><h2 id="gridExpendCost">0 Cr.</h2>' +
 			'<div id="expenditureSlider" class="volumeSlider"></div>' +
 			'</div>' +
-            /*
-			'<div class="centeredButtonWrapper" style="margin-bottom: 20px">' +
-			'<div class="selectorButton windowMainActionButton orangeButton windowLargeOkButton" onclick="UI.closeModal()">Close</div>' +
-			'</div>' +
-			*/
 		'</div>' +
 			'</div>';
 
@@ -51,7 +54,7 @@ var GridInterface = {};
 	};
 
 	GridInterface.addButton = function (screen, buttonArray) {
-		//if (GameManager.company.flags.grid === true && screen == "primary") {
+		if (GameManager.company.flags.grid === true && screen == "primary") {
 		buttonArray.push({
 			label: "Grid...".localize("menu item"),
 			action: function () {
@@ -59,12 +62,13 @@ var GridInterface = {};
 				GridInterface.showGridWindow();
 			}
 		});
-		//}
+		}
 	};
 
 	GridInterface.showGridWindow = function () {
 
 		var draw = $('#gridInterface');
+		GridInterface.updateFocusPreview();
         draw.scrollTop();
         draw.gdDialog({
             popout: !0,
@@ -89,6 +93,8 @@ var GridInterface = {};
 			slide: function (a, b) {
 				var c = b.value;
                 GridCore.updateGridCost(c);
+                delayUpdate();
+                //GridInterface.updateFocusPreview();
 			}
 		});
 
@@ -102,6 +108,8 @@ var GridInterface = {};
 			slide: function (a, b) {
 				var c = b.value;
 				GridCore.updateNCCost(c);
+				delayUpdate();
+				//GridInterface.updateFocusPreview();
 			}
 		});
 
@@ -115,6 +123,8 @@ var GridInterface = {};
 			slide: function (a, b) {
 				var c = b.value;
 				GridCore.updateMarkCost(c);
+				delayUpdate();
+				//GridInterface.updateFocusPreview();
 			}
 		});
 
@@ -128,10 +138,57 @@ var GridInterface = {};
 			slide: function (a, b) {
 				var c = b.value;
 				GridCore.updateMainCost(c);
+				delayUpdate();
+				//GridInterface.updateFocusPreview();
 			}
 		});
 
 	};
+
+	GridInterface.updateFocusPreview = function() {
+		wa = GridInterface.budgetWeightings();
+		
+		nc = wa[0];
+		mk = wa[1];
+		mn = wa[2];
+		
+		f = $(".budgetDurationPreviewWrapper");
+		
+		a = $(".newConPreview");
+		b = $(".marketPreview");
+		c = $(".mainPreview");
+		
+		w = 524 * (GridCore.expPer()/100);
+		
+		a.width(nc / 100 * w);
+		b.width(mk / 100 * w);
+		c.width(mn / 100 * w);
+	};
+	
+	GridInterface.budgetWeightings = function(){
+		
+		var featureWeighting = [GridCore.ncPer(), GridCore.markPer(), GridCore.mainPer()];
+		
+		var minValuePerFeature = 1;
+		
+		var total = featureWeighting.sum();
+		
+		if (total == 0){ return [100 / 3, 100 / 3, 100 / 3];
+		}
+		
+		var finalValues = featureWeighting.map(function (v) {
+					return v / (total / (100 - minValuePerFeature * 3)) + minValuePerFeature;
+				});
+		
+		return finalValues;
+	};
+	
+	
+	function delayUpdate() {
+		GameManager.addTickListener(GridInterface.updateFocusPreview, false);
+	};
+	
+
 
 	GridInterface.runStartUp = function () {
 		GridInterface.setGridWindow();

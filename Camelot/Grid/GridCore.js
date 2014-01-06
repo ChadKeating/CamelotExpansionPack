@@ -20,7 +20,7 @@ var GridCore = {};
     //Slider updates
 	GridCore.updateGridCost = function (value){
         var value = value;
-        var tenP = CAMELOT.gC().cash * 0.1;
+        var tenP = CAMELOT.gC().cash * 0.025;
 		var ex = tenP * (value/100);
 		CAMELOT.store().gridExpPer = value;
 		CAMELOT.store().gridExpend = ex;
@@ -51,44 +51,38 @@ var GridCore = {};
 	};
 	
 	
+
+	
+	
+	
+	
 	GridCore.runStartUp = function () {
 		GridCore.setGridValues();
+		GridCore.salesOverride();
 	};
 
-/*
+
     GridCore.salesOverride = function () {
-        if (CAMELOT.gC().flags.grid) {
-            var availablePlatforms = Platforms.getPlatformsOnMarket(CAMELOT.gC());
-            var maxShare = Platforms.getMarketSizeForWeek(availablePlatforms.first(function (p) { return p.id === "PC" }), CAMELOT.gC().currentWeek, CAMELOT.gC(), true);
-            var maxId = "PC";
-            var customPlatforms = availablePlatforms.filter(function (p) {
-                return p.isCustom
-            });
-            for (var i = 0; i < customPlatforms.length; i++) {
-                var currentMax = Platforms.getMarketSizeForWeek(customPlatforms[i], CAMELOT.gC().currentWeek, CAMELOT.gC(), true);
-                if (currentMax > maxShare) {
-                    maxShare = currentMax;
-                    maxId = customPlatforms[i].id
-                }
-            }
-            var maxPlatform = availablePlatforms.first(function (p) {
-                return p.id === maxId
-            });
+		var keepme = General.proceedOneWeek;
+		
+		General.proceedOneWeek = function(company, fractionalWeek){
+			
+			var grid = company.flags.grid;
+    		    		
+    		company.flags.grid = false;
 
-            var gridOI = Platforms.getTotalMarketSizePercent(maxPlatform, GameManager.company) / 100 * 2E6;
+    		if (grid === true && company.getDate(company.currentWeek).week === 1 && company.currentWeek > 0) {
+    			GridSales.calculateSales(company);
+    		}
 
-            var gridIncome =  gridOI + GridCore.calculateSales(gridOI);
-            CAMELOT.gC().adjustCash(gridIncome, "Grid income".localize("heading"));
-        }
+    		keepme(company, fractionalWeek);
+
+    		company.flags.grid = grid;
+
+    	};
+    	
     };
 
-    GridCore.calculateSales = function (gridOI) {
-        var nc = GridCore.ncPer();
-        var mark = GridCore.markPer();
-        var main = GridCore.mainPer();
-        var exp = GridCore.expPer();
 
-    };
-*/
 
 })();

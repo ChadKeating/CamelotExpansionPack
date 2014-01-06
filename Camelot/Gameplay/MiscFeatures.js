@@ -5,12 +5,7 @@
  */
 var MiscFeatures = {};
 (function () {
-	
-	/*
-	 * Short Hand Variables
-	 */
-	var evKey = GDT.eventKeys.gameplay;
-	
+		
     MiscFeatures.addGameExtentions = function () {
     	
         var findMe = document.getElementById("gameLengthSelection");
@@ -34,9 +29,29 @@ var MiscFeatures = {};
         
     };
     
+    MiscFeatures.earlySequels = function () {
+        var r = Research.Sequels;
+        r.pointsCost = 5;
+        r.devCost = 500;
+        r.canResearch = function (c) { return c.gameLog.length > 1; };
+    };
+
+
+    
+   	MiscFeatures.visualTweaks = function (){
+   		UltimateLib.VisualTweaks.setRoundedWindows();
+   		UltimateLib.VisualTweaks.setScrollBar();
+   		UltimateLib.VisualTweaks.setRoundedButtons();
+   		UltimateLib.VisualTweaks.setRoundedBars();
+   		UltimateLib.VisualTweaks.setTextBox();
+   		
+   	};
+        
     
     MiscFeatures.runStartUp = function () {
     	MiscFeatures.addGameExtentions();
+    	MiscFeatures.visualTweaks();
+    	//MiscFeatures.contractFix();
     };
     
 })();

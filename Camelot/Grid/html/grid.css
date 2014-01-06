@@ -1,5 +1,5 @@
 .newCon .ui-slider-range {
-background: linear-gradient(to bottom, #c9de96 0%,#8ab66b 57%,#398235 100%);
+	background: linear-gradient(to bottom, #c9de96 0%,#8ab66b 57%,#398235 100%);
 }
 
 .market .ui-slider-range {
@@ -10,9 +10,41 @@ background: linear-gradient(to bottom, #c9de96 0%,#8ab66b 57%,#398235 100%);
     background: linear-gradient(to bottom,  #a90329 0%,#8f0222 44%,#6d0019 100%);
 }
 
+.budgetDurationPreviewContainer {
+	margin: 10px 20px;
+}
+.budgetDurationPreviewTitle {
+	font-size: 14pt;
+}
+.budgetDurationPreviewWrapper {
+	/*word spacing to counteract inline-block margin issue: http://stackoverflow.com/questions/1833734/display-inline-block-extra-margin*/
+	word-spacing: -1em;
+	text-align: center;
+	border-width: 1px;
+	border-color: #aaaaaa;
+	border-style: solid;
+	background: #eeeeee;
+	width: 524px;
+	height:20px;
+}
 
+.budgetDurationPreview {
+	height: 20px;
+	display: inline-block;
+	float: left;
+}
 
+.newConPreview {
+	background: linear-gradient(to bottom, #c9de96 0%,#8ab66b 57%,#398235 100%);
+}
 
+.marketPreview {
+	background: linear-gradient(to bottom, rgba(107,178,196,1) 0%,rgba(35,83,138,1) 100%);
+}
+
+.mainPreview {
+	background: linear-gradient(to bottom,  #a90329 0%,#8f0222 44%,#6d0019 100%);
+}
 
 .focusSliderWrapper.newCon {
 		left: 5px;

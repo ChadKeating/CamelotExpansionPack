@@ -37,7 +37,7 @@ var MiscEvent = {};
 				sourceId: bailEVID,
 				header: "Bail!".localize(),
 				text: message,
-				options: ["Bail (5000)", "Do Nothing"]
+				options: ["Bail (5k.)", "Do Nothing"]
 			});
 		},
 		complete: function (decision) {
@@ -103,7 +103,7 @@ var MiscEvent = {};
 
 
 	MiscEvent.EventLottery = function () {
-		if (CAMELOT.store().lotto !== true) {
+		if (CAMELOT.store().lotto === false) {
 			if (Math.floor((Math.random() * 170000) + 1) == 1) {
 				var win = Math.floor((Math.random() * 50000000) + 1000000);
 				CAMELOT.post(new Notification("You won the lottery!".localize(), "WOW, You had the winning ticket. You won " + win.toLocaleString() + "Cr."));
@@ -121,7 +121,7 @@ var MiscEvent = {};
 
 	MiscEvent.Stolen = function () {
 		if ( !(2 >= CAMELOT.gC().flags.evil)){return;}
-		if (CAMELOT.store().stolen !== true) {
+		if (CAMELOT.store().stolen === false) {
 			if (Math.floor((Math.random() * 18000) + 1) != 1) {
 				return;
 			}
@@ -160,10 +160,10 @@ var MiscEvent = {};
 
 	MiscEvent.BailOut = function () {
 		if (CAMELOT.store().bailRan !== true) {
-			if (CAMELOT.gC().staff.length == 1) {
+			if (CAMELOT.gC().staff.length === 1) {
 				return;
 			}
-			if (Math.floor((Math.random() * 1500) + 1) != 1) {
+			if (Math.floor((Math.random() * 1500) + 1) !== 1) {
 				return;
 			}
 

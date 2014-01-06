@@ -11,6 +11,8 @@
 		//Grid
 		GridInterface.runStartUp();
         GridCore.runStartUp();
+        
+        CAMELOT.stats();
 	};
 
 	var error = function () {
@@ -27,6 +29,7 @@
 		'mods/Camelot/Story/MiscEvent.js',
 		//Load Grid
 		'mods/Camelot/Grid/GridInterface.js',
+		'mods/Camelot/Grid/GridSales.js',
         'mods/Camelot/Grid/GridCore.js',
 		//Load Gameplay
 		'mods/Camelot/Gameplay/Specialism.js',
