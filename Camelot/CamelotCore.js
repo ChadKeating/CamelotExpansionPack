@@ -135,19 +135,18 @@ var CAMELOT = {};
     };
     
     
+    CAMELOT.setOverflow = function () {
     
+        $('head').append('<style id="camelotCSSTweaks" type="text/css">#newGameView .featureSelectionPanel { overflow-x: none; overflow-y: scroll; }</style>');
     
-    
-    
-    
-    
-    
+    };
     
     
     
     
 
-	CAMELOT.runStartUp = function () {
+    CAMELOT.runStartUp = function () {
+        CAMELOT.setOverflow();
 		CAMELOT.setContextButtons();
 		CAMELOT.getShortNumberString();
     };
