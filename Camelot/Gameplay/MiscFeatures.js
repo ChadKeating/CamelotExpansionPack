@@ -98,8 +98,19 @@ var MiscFeatures = {};
 
    	MiscFeatures.setWatermarks = function () {
    	    UltimateLib.VisualTweaks.setWatermarks("slider-engine-img", ".\/mods\/Camelot\/Gameplay\/images\/gear.gif");
+   	    UltimateLib.VisualTweaks.setWatermarks("slider-gameplay-img", ".\/mods\/Camelot\/Gameplay\/images\/gameplay.gif");
+   	    UltimateLib.VisualTweaks.setWatermarks("slider-story-img", ".\/mods\/Camelot\/Gameplay\/images\/story.gif");
+
+   	    UltimateLib.VisualTweaks.setWatermarks("slider-dialogs-img", ".\/mods\/Camelot\/Gameplay\/images\/dialog.gif");
+   	    UltimateLib.VisualTweaks.setWatermarks("slider-level-img", ".\/mods\/Camelot\/Gameplay\/images\/level.gif");
    	    UltimateLib.VisualTweaks.setWatermarks("slider-ai-img", ".\/mods\/Camelot\/Gameplay\/images\/ai.gif");
+
+   	    UltimateLib.VisualTweaks.setWatermarks("slider-world-img", ".\/mods\/Camelot\/Gameplay\/images\/world.gif");
+   	    UltimateLib.VisualTweaks.setWatermarks("slider-graphic-img", ".\/mods\/Camelot\/Gameplay\/images\/graphics.gif");
    	    UltimateLib.VisualTweaks.setWatermarks("slider-sound-img", ".\/mods\/Camelot\/Gameplay\/images\/sound.gif");
+   	    
+   	    
+   	    
    	};
 
     MiscFeatures.runStartUp = function () {
