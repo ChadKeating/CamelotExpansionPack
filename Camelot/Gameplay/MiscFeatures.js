@@ -107,7 +107,7 @@ var MiscFeatures = {};
     	MiscFeatures.visualTweaks();
     	MiscFeatures.addGameEngineField();
     	MiscFeatures.setGameEngineField();
-    	//MiscFeatures.setWatermarks();
+    	MiscFeatures.setWatermarks();
     	//MiscFeatures.setFSPHeight();
     	//MiscFeatures.contractFix();
     };
