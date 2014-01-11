@@ -6,6 +6,6 @@
 	"description" : "Large expansion mod with many added game features.",
 	"url" : "http://forum.greenheartgames.com/t/wip-beta-camelot-expansion-pack/9585",
 	"main" : "./CamelotMain.js",
+	"ultimatelib" : "CAMELOT",
 	"dependencies" : {"UltimateLib":"1.x.x"}
-
 }

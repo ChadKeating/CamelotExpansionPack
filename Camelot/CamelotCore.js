@@ -6,6 +6,25 @@
 var CAMELOT = {};
 (function () {
 	
+    CAMELOT.ulInit = function () {
+        //Run CAMELOT start up functions
+        CAMELOT.runStartUp();
+        MiscEvent.runStartUp();
+        Train.runStartUp();
+        Debug.runStartUp();
+        Specialism.runStartUp();
+        MiscFeatures.runStartUp();
+        StartingMoney.runStartUp();
+        //Grid
+        GridInterface.runStartUp();
+        GridCore.runStartUp();
+        GameMode.runStartUp();
+
+        console.log("STARTUP RANNNNN1111111");
+        CAMELOT.stats();
+    };
+
+
 	CAMELOT.store = function() {
 		return GDT.getDataStore("CAMELOT-EXP-PACK").data;
 	};

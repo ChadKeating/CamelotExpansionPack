@@ -19,6 +19,19 @@
 
 
     var ready = function () {
+        //Run CAMELOT start up functions
+        CAMELOT.runStartUp();
+        MiscEvent.runStartUp();
+        Train.runStartUp();
+        Debug.runStartUp();
+        Specialism.runStartUp();
+        MiscFeatures.runStartUp();
+        StartingMoney.runStartUp();
+        //Grid
+        GridInterface.runStartUp();
+        GridCore.runStartUp();
+        GameMode.runStartUp();
+        /*
         var success = function () {
             //Run CAMELOT start up functions
             CAMELOT.runStartUp();
@@ -38,6 +51,7 @@
         }
 
         GDT.loadJs(['mods/UltimateLib/UltimateLib.js'], success, error);
+        */
 	};
 
 	var error = function () {
