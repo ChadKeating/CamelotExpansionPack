@@ -82,7 +82,7 @@ var GridInterface = {};
             }
         });
 
-        draw.find("#gridExpendCost").html(UI.getShortNumberString(CAMELOT.store().gridExpend) + " Cr.");
+        draw.find("#gridExpendCost").html(UI.getShortNumberString(Camelot2.Store().gridExpend) + " Cr.");
 
         draw.find("#expenditureSlider").slider({
 			min: 0,

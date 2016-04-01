@@ -1,14 +1,15 @@
-/*
- * Version: 0.1.0
- * Description: Core functions of the Grid Expansion Module
- *
- */
-var GridCore = {};
-(function () {
-    //Intialise variables
-	GridCore.setGridValues = function () {
-		var s = CAMELOT.store();
-		if (s.gridSet === true) {return;}
+Camelot2.Grid = {};
+Camelot2.Grid.Core = {};
+(function (self) {
+
+	self.Init = function () {
+		this.setGridValues();
+		this.salesOverride();
+	};
+
+	self.setGridValues = function () {
+		var s = Camelot2.Store();
+		if (s.gridSet === true) { return; }
 		s.gridNewCPer = 50;
 		s.gridMarkPer = 25;
 		s.gridMainPer = 50;
@@ -17,72 +18,50 @@ var GridCore = {};
 		s.gridSet = true;
 	};
 
-    //Slider updates
-	GridCore.updateGridCost = function (value){
-        var value = value;
-        var tenP = CAMELOT.gC().cash * 0.025;
-		var ex = tenP * (value/100);
-		CAMELOT.store().gridExpPer = value;
-		CAMELOT.store().gridExpend = ex;
-        $("#gridInterface").find("#gridExpendCost").html(UI.getShortNumberString(ex) + " Cr.");
-    };
-	GridCore.updateNCCost = function (value){
-		CAMELOT.store().gridNewCPer = value;
+	//Slider updates
+	self.updateGridCost = function (value) {
+		var value = value;
+		var tenP = GameManager.company.cash * 0.025;
+		var ex = tenP * (value / 100);
+		Camelot2.Store().gridExpPer = value;
+		Camelot2.Store().gridExpend = ex;
+		$("#gridInterface").find("#gridExpendCost").html(UI.getShortNumberString(ex) + " Cr.");
 	};
-	GridCore.updateMarkCost = function (value){
-		CAMELOT.store().gridMarkPer = value;
+	self.updateNCCost = function (value) {
+		Camelot2.Store().gridNewCPer = value;
 	};
-	GridCore.updateMainCost = function (value){
-		CAMELOT.store().gridMainPer = value;
+	self.updateMarkCost = function (value) {
+		Camelot2.Store().gridMarkPer = value;
 	};
-
-    //Percentage Values/Slider Values
-    GridCore.expPer = function () {
-        return CAMELOT.store().gridExpPer;
-    };
-	GridCore.ncPer = function () {
-		return CAMELOT.store().gridNewCPer;
-	};
-	GridCore.markPer = function () {
-		return CAMELOT.store().gridMarkPer;
-	};
-	GridCore.mainPer = function () {
-		return CAMELOT.store().gridMainPer;
-	};
-	
-	
-
-	
-	
-	
-	
-	GridCore.runStartUp = function () {
-		GridCore.setGridValues();
-		GridCore.salesOverride();
+	self.updateMainCost = function (value) {
+		Camelot2.Store().gridMainPer = value;
 	};
 
+	//Percentage Values/Slider Values
+	self.expPer = function () {
+		return Camelot2.Store().gridExpPer;
+	};
+	self.ncPer = function () {
+		return Camelot2.Store().gridNewCPer;
+	};
+	self.markPer = function () {
+		return Camelot2.Store().gridMarkPer;
+	};
+	self.mainPer = function () {
+		return Camelot2.Store().gridMainPer;
+	};
 
-    GridCore.salesOverride = function () {
-		var keepme = General.proceedOneWeek;
-		
-		General.proceedOneWeek = function(company, fractionalWeek){
-			
-			var grid = company.flags.grid;
-    		    		
-    		company.flags.grid = false;
+	self.salesOverride = function () {
+		var currentFunction = General.proceedOneWeek;
+		General.proceedOneWeek = function (company, fractionalWeek) {
+			if (company.flags.grid == true &&
+				company.getDate(company.currentWeek).week == 1 &&
+				company.currentWeek > 0) {
+				Camelot2.Grid.Sales.calculateSales(company);
+			}
+			currentFunction(company, fractionalWeek);
+		};
+	};
 
-    		if (grid === true && company.getDate(company.currentWeek).week === 1 && company.currentWeek > 0) {
-    			GridSales.calculateSales(company);
-    		}
-
-    		keepme(company, fractionalWeek);
-
-    		company.flags.grid = grid;
-
-    	};
-    	
-    };
-
-
-
+	Camelot2.InitListeners.push(self.Init);
 })();
